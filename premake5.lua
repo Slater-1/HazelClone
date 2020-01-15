@@ -18,6 +18,9 @@ project "HazelClone"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("obj/" .. outputdir .. "/%{prj.name}")
 	
+	pchheader "hzpch.h"
+	pchsource "HazelClone/src/hzpch.cpp"
+	
 	files
 	{
 		"%{prj.name}/src/**.h",
