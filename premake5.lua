@@ -9,7 +9,13 @@ workspace "HazelClone"
 	}
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
-	
+
+-- Include directories relative to root folder (solution dir)
+IncludeDir = {}
+IncludeDir["GLFW"] = "HazelClone/vendor/GLFW/include"
+
+include "HazelClone/vendor/GLFW"
+
 project "HazelClone"
 	location "HazelClone"
 	kind "SharedLib"
@@ -30,9 +36,16 @@ project "HazelClone"
 	includedirs
 	{
 		"%{prj.name}/vendor/spdlog/include",
-		"%{prj.name}/src"
+		"%{prj.name}/src",
+		"%{IncludeDir.GLFW}"
 	}
 	
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
+	}
+
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
