@@ -1,7 +1,6 @@
 #include "hzpch.h"
 #include "Application.h"
 
-#include "Hazel/Events/ApplicationEvent.h"
 #include "Hazel/Log.h"
 
 #include <GLFW/glfw3.h>
@@ -22,7 +21,10 @@ namespace Hazel {
 
 		void Application::OnEvent(Event& e)
 		{
-			HZ_CORE_INFO("{0}", e);
+			EventDispatcher dispatcher(e);
+			dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+
+			HZ_CORE_TRACE("{0}", e);
 		}
 
 		void Application::Run()
@@ -35,4 +37,9 @@ namespace Hazel {
 			}
 		}
 
+		bool Application::OnWindowClose(WindowCloseEvent& e)
+		{
+			m_Running = false;
+			return true;
+		}
 }
