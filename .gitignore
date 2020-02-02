@@ -1,6 +1,6 @@
 # Binaries
-/bin/
-/obj/
+**/bin/
+**/obj/
 
 # Visual Studio files and folder
 .vs/
