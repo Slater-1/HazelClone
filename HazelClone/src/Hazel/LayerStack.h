@@ -29,8 +29,8 @@ namespace Hazel {
 		std::vector<Layer*> m_Layers;
 
 		// tracks the boundary between layers and overlays
-		// in the above example, this iterator would point to the 3rd layer
-		std::vector<Layer*>::iterator m_LayerInsert;
+		// in the above example, this would be the index to the 3rd layer
+		unsigned int m_LayerInsertIndex = 0;
 	};
 
 }
