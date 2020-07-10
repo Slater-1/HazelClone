@@ -36,6 +36,10 @@ namespace Hazel {
 		LayerStack m_LayerStack;
 
 		static Application* s_Instance;
+
+		unsigned int m_VertexArray;
+		unsigned int m_VertexBuffer;
+		unsigned int m_IndexBuffer;
 	};
 
 	// To be defined in a CLIENT
